@@ -3,58 +3,177 @@
 <head>
     <meta charset="UTF-8">
     <title>내신 계산기</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;600;700&display=swap" rel="stylesheet">
+
     <style>
+        * {
+            box-sizing: border-box;
+            font-family: 'Pretendard', sans-serif;
+        }
+
         body {
-            font-family: Arial, sans-serif;
-            margin: 40px;
+            margin: 0;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
-        input {
-            margin: 5px 0;
-            padding: 5px;
-            width: 100px;
+
+        .card {
+            background: white;
+            width: 100%;
+            max-width: 420px;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
         }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 25px;
+            font-size: 26px;
+            font-weight: 700;
+            color: #333;
+        }
+
+        .field {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .field label {
+            font-weight: 600;
+            color: #444;
+        }
+
+        .field span {
+            font-size: 12px;
+            color: #888;
+        }
+
+        .field input {
+            width: 90px;
+            padding: 8px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            font-size: 14px;
+            text-align: center;
+        }
+
+        .field input:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 2px rgba(102, 126, 234, 0.2);
+        }
+
         button {
-            margin-top: 10px;
-            padding: 8px 15px;
+            width: 100%;
+            margin-top: 20px;
+            padding: 12px;
+            border: none;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
             font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.1s ease, box-shadow 0.1s ease;
         }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
         .result {
-            margin-top: 30px;
-            font-size: 28px;
-            font-weight: bold;
-            color: #2c3e50;
+            margin-top: 25px;
+            padding: 20px;
+            border-radius: 14px;
+            background: #f5f6ff;
+            text-align: center;
         }
+
+        .result-title {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 8px;
+        }
+
+        .result-score {
+            font-size: 32px;
+            font-weight: 700;
+            color: #667eea;
+        }
+
         .note {
             margin-top: 20px;
             font-size: 12px;
-            color: gray;
+            color: #888;
+            text-align: center;
         }
     </style>
 </head>
 <body>
 
-    <h1>내신 산출기</h1>
+<div class="card">
+    <h1>📘 내신 산출기</h1>
 
     <form method="post">
-        <div>국어 (시수 4): <input type="number" step="1" name="korean" required></div>
-        <div>영어 (시수 4): <input type="number" step="1" name="english" required></div>
-        <div>수학 (시수 4): <input type="number" step="1" name="math" required></div>
-        <div>사회 (시수 3): <input type="number" step="1" name="social" required></div>
-        <div>과학 (시수 4): <input type="number" step="1" name="science" required></div>
-        <div>한국사 (시수 3): <input type="number" step="1" name="history" required></div>
+        <div class="field">
+            <label>국어</label>
+            <span>시수 4</span>
+            <input type="number" step="1" name="korean" required>
+        </div>
 
-        <button type="submit">내신 계산</button>
+        <div class="field">
+            <label>영어</label>
+            <span>시수 4</span>
+            <input type="number" step="1" name="english" required>
+        </div>
+
+        <div class="field">
+            <label>수학</label>
+            <span>시수 4</span>
+            <input type="number" step="1" name="math" required>
+        </div>
+
+        <div class="field">
+            <label>사회</label>
+            <span>시수 3</span>
+            <input type="number" step="1" name="social" required>
+        </div>
+
+        <div class="field">
+            <label>과학</label>
+            <span>시수 4</span>
+            <input type="number" step="1" name="science" required>
+        </div>
+
+        <div class="field">
+            <label>한국사</label>
+            <span>시수 3</span>
+            <input type="number" step="1" name="history" required>
+        </div>
+
+        <button type="submit">내신 계산하기</button>
     </form>
 
     {% if result is not none %}
         <div class="result">
-            최종 내신 점수: {{ result }}
+            <div class="result-title">최종 내신 점수</div>
+            <div class="result-score">{{ result }}</div>
         </div>
     {% endif %}
 
     <div class="note">
-        ⚠️ 본 내신 산출기는 운정고 1학년 2학기 과목을 기준으로 제작되었습니다.
+        ⚠️ 내신 산출기는 운정고 1학년 2학기 과목을 기준으로 제작되었습니다.
     </div>
+</div>
 
 </body>
 </html>

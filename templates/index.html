@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>내신 계산기</title>
+</head>
+<body>
+    <h1>내신 산출기</h1>
+
+    <form method="post">
+        <input name="score1" type="number" placeholder="과목 1" required><br>
+        <input name="score2" type="number" placeholder="과목 2" required><br>
+        <input name="score3" type="number" placeholder="과목 3" required><br>
+        <button type="submit">계산</button>
+    </form>
+
+    {% if result %}
+        <h2>결과: {{ result }}</h2>
+    {% endif %}
+
+    <p style="font-size:12px;">
+        ⚠️ 학교별 내신 반영 방식에 따라 결과가 다를 수 있습니다.
+    </p>
+</body>
+</html>
